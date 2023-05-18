@@ -2,6 +2,8 @@ import { Route, Routes } from "react-router-dom"
 import { Home } from "./screens/Home"
 import { Recharge } from "./screens/Recharge"
 import { Amount } from "./screens/Amount"
+import { DynamicMenu } from "./screens/DynamicMenu"
+
 
 
 export default function App() {
@@ -10,6 +12,8 @@ export default function App() {
       <Route path="/" element={<Home />} />
       <Route path="/recharge" element={<Recharge />} />
       <Route path="/amount" element={<Amount />} />
+      <Route path="/dynamicMenu" element={<DynamicMenu />} />
+
     </Routes>
   )
 }
