@@ -1,28 +1,23 @@
-import { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom"
+import { currentMenu } from "../state/NavigationData";
 import "./Screen.css"
-import "../state/NavigationData"
-import { push } from "../state/NavigationData";
 
-export function DynamicMenu() {
-    const [inputText, setInputText] = useState("");
-    const [listItems, setListItems] = useState(undefined);
+export function DynamicMenu({ thisMenu }: any) {
 
-    
-    setListItems(push(inputText));
-    const navigateOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        setListItems(push(inputText));
-
+    var getListItems = (screen: Object): any => {
+        return Object.entries(screen).filter(([key, arr]) => { return key !== "item" }).map(([key, arr]) => {
+            return (
+                <li key={key}>
+                    {"" + key + " " + arr["item"]}
+                </li>
+            );
+        });
     }
 
     return (
         <div className="screen">
-            {listItems}
             <ul style={{ listStyleType: "none" }} >
-                
+                {getListItems(thisMenu)}
             </ul>
-            <form /* onSubmit={(event) => { navigateOnSubmit(event) }} */> <input onChange={(event)=>setInputText(event.target.value)} type="text"/> <input type="button" value="->" style={{ textEmphasis: "ButtonText" }} /></form>
         </div >
     )
 }

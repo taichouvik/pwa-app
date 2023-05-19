@@ -13,47 +13,37 @@
 var menu =
 {
     "0": {
-        "0": { "item": "Check balance" },
+        "item": "menu",
+        "0": {
+            "item": "Check balance",
+            "0": { "item": "GSM", "page": "/balance" },
+            "1": { "item": "Airtel Money" },
+            "*": { "item": "Go Back" },
+            "#": { "item": "Main Menu" }
+
+        },
         "1": {
-            "item": "Recharge Airtime", "next": {
-                "0": { "item": "Recharge for Self" },
-                "1": { "item": "Recharge for Others", "next": { "item": "Enter Amount" } },
-                "#": { "item": "Go Back" }
-            },
+            "item": "Recharge Airtime",
+            "0": { "item": "Recharge for Self", "page": "/amount"  },
+            "1": { "item": "Recharge for Others"},
+            "#": { "item": "Go Back" }
         },
         "2": { "item": "Buy Bundle" },
         "3": { "item": "Airtel Money Balance", },
         "4": { "item": "Send Money" },
         "5": { "item": "Pay Bill" }
+
     }
 };
 
-var currentScreen: any[] =[];
+var currentMenu: any = menu["0"];
 
-var push=(i:number|string) : any=>{
-   var lastScreen=currentScreen[currentScreen.length-1];
-   if(lastScreen===undefined){
-    lastScreen=menu[0];
-    currentScreen.push(lastScreen);
-    return getListItems(lastScreen);
-   }
-
-   var newScreen=lastScreen[i];
-   if(newScreen === undefined)
-    return undefined;
-
-   currentScreen.push(newScreen);
-   return getListItems(newScreen); 
+var getNextMenu = (i: string): any => {
+    var newMenu = currentMenu[i as keyof typeof currentMenu];
+    if (newMenu === undefined)
+        return "error";
+    currentMenu = newMenu;
+    return currentMenu;
 }
 
-var getListItems=(screen:Object) : any=>{
-    return Object.entries(screen).map(([key, arr]) => {
-        return (
-            <li key={key}>
-                {"" + key +" " + arr["item"]}
-            </li>
-        );
-    });
-}
-
-export {push};
+export { getNextMenu, currentMenu };
