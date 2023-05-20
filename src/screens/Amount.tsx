@@ -3,7 +3,8 @@ import "./Screen.css"
 export function Amount() {
     return (
         <div className="screen">
-            <div>Enter Amount</div>
+            <p>Enter Amount</p>
+            <input type="text" style={{ marginTop: "auto" }} />
         </div>
     )
 }

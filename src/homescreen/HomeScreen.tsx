@@ -1,6 +1,7 @@
+import "./HomeScreen.css"
 export function HomeScreen() {
 
     return (
-        <div color="red"><p color="white">Add to home screen</p></div>
+        <p className="addToHomeSceenFooter" > Add to home screen</p>
     )
 }

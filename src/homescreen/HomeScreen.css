@@ -1,0 +1,9 @@
+.addToHomeSceenFooter {
+    background-color: red;
+    color: white;
+    text-align: center;
+}
+
+.addToHomeSceenFooter:hover {
+    font-weight: bold;
+}

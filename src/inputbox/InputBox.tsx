@@ -1,12 +1,13 @@
+
 interface handlers {
-    onSubmit: any;
-    onChange: any;
+    onSubmit?: ((event: React.FormEvent<HTMLFormElement>) => void);
+    onChange?: undefined | ((event: React.ChangeEvent<HTMLInputElement>) => void);
 }
-export function InputBox({ onSubmit = undefined, onChange = undefined }: handlers) {
+export function InputBox({ onSubmit , onChange = undefined }: handlers) {
 
     return (
-        <form onSubmit={onSubmit}>
-            <input type="text" name="option" /> <input type="submit" onChange={onChange} value="->" style={{ textEmphasis: "ButtonText" }} />
+        <form className="inputBox" onSubmit={onSubmit} style={{display:"flex"}}>
+            <input onChange={onChange} type="text" style={{flex: "1" }}/><input type="submit" value="->" style={{ textEmphasis: "ButtonText" }} />
         </form>
     )
 }
