@@ -8,7 +8,7 @@ import { HomeScreen } from "../homescreen/HomeScreen"
 export function Balance() {
     return (
         <div className="screen">
-            <p>Your balances</p>
+            <p style={{fontSize:"1.25em"}}>Your balances</p>
             <div style={{ flex: "1" }}></div>
 
             <HomeScreen />

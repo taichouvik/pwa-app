@@ -2,6 +2,10 @@
     background-color: red;
     color: white;
     text-align: center;
+    height: 3rem;
+    box-sizing: border-box;
+    margin-top: auto;
+    padding-top: 1rem;
 }
 
 .addToHomeSceenFooter:hover {

@@ -1,0 +1,12 @@
+.mobilenumber {
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+    font-size: 1.25em;
+    background-color: rgb(32, 32, 32);
+    border-style: solid;
+    color: white;
+}
+.mobilenumber::placeholder {
+    color: white;
+}

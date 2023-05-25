@@ -1,7 +1,7 @@
-.menu{
+.menu {
     color: white;
     background-color: black;
-    display:flex;
+    display: flex;
     flex-direction: column;
     height: 100vh;
     width: 100vw;
@@ -9,15 +9,15 @@
     box-sizing: border-box
 }
 
-.inputBox{
-    width:"100em"
+.inputBox {
+    width: "100em"
 }
 
-.dynamicMenu{
+.dynamicMenu {
     flex: 1;
-    border-style: ridge;
+    border-style: groove;
 }
 
-.dynamicMenuListItems:hover{
+.dynamicMenuListItems:hover {
     font-weight: bold;
 }
