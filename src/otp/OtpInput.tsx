@@ -68,40 +68,42 @@ export default function OtpInput() {
     };
 
     var navigate = useNavigate();
-    const handleOtpSubmit = () => {
-        navigate("/menu");
-        var response;
-        const instance = axios.create(
-            {
-                baseURL: "http://localhost:8080/",
-                withCredentials: false,
-                headers: {
-                    'Content-Type': 'application/json'
-                }
+    const handleOtpSubmit = (e: React.KeyboardEvent) => {
+        if (e.key === "Enter") {
+            navigate("/menu");
+            var response;
+            const instance = axios.create(
+                {
+                    baseURL: "http://localhost:8080/",
+                    withCredentials: false,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
 
-            })
-        response = instance.post("verifyOtp",
-            {
-                otp: otpValue,
-                otpid: otpId,
-                msisdn: msisdn
-            })
-            .then(res => {
-                navigate("/menu");
-            }).catch(res => {
-                console.log(res);
-            })
-        //     if (response.data?.statusCode === 200)
-        //         navigate("/menu");
-        //     return (<p>{response.data}</p>)
-        // } catch (error) {
-        //     return error;
-        // }
+                })
+            response = instance.post("verifyOtp",
+                {
+                    otp: otpValue,
+                    otpid: otpId,
+                    msisdn: msisdn
+                })
+                .then(res => {
+                    navigate("/menu");
+                }).catch(res => {
+                    console.log(res);
+                })
+            //     if (response.data?.statusCode === 200)
+            //         navigate("/menu");
+            //     return (<p>{response.data}</p>)
+            // } catch (error) {
+            //     return error;
+            // }
 
-        // axios.get('http://localhost:8080/get')
-        // .then(res => {
-        //   console.log(res);
-        // })
+            // axios.get('http://localhost:8080/get')
+            // .then(res => {
+            //   console.log(res);
+            // })
+        }
     }
 
 
@@ -158,7 +160,7 @@ export default function OtpInput() {
                         maxLength={valueLength}
                         value={digit}
                         onChange={(event: React.ChangeEvent<HTMLInputElement>) => inputOnChange(event, idx)}
-                        onKeyDown={()=>handleOtpSubmit()}
+                        onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => handleOtpSubmit(event)}
                     />
                 ))}
             </div>
