@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES6",
     "lib": [
       "dom",
       "dom.iterable",
@@ -22,6 +22,6 @@
   },
   "include": [
     "src",
-    "src/screens"
-  ]
+    "src/balance"
+, "public/serviceworker.ts", "src/service-worker.ts"  ]
 }

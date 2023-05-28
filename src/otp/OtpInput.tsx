@@ -10,6 +10,9 @@ import * as LoginState from "../login/LoginState";
 import { msisdn, otpId } from '../login/LoginState';
 import './OtpInput.css';
 import "./Screen.css";
+import * as Rest from "../rest/Rest";
+import * as Urls from "../constants/Urls"
+import { ApiResponse } from '../apiresponse/ApiResponse';
 
 export default function OtpInput() {
     var valueLength = 6;
@@ -81,13 +84,15 @@ export default function OtpInput() {
                     }
 
                 })
-            response = instance.post("verifyOtp",
-                {
-                    otp: otpValue,
-                    otpid: otpId,
-                    msisdn: msisdn
-                })
+            response = Rest.post(Urls.verifyOtp, {
+                otp: otpValue,
+                otpid: otpId,
+                msisdn: msisdn
+            })
                 .then(res => {
+                    const body = res.result as ApiResponse;
+                    const { token } = body.result as { token: string };
+                    LoginState.setToken(token);
                     navigate("/menu");
                 }).catch(res => {
                     console.log(res);

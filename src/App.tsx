@@ -1,11 +1,9 @@
 import { Route, Routes } from "react-router-dom"
-import {Menu } from "./menu/Menu"
-import { Recharge } from "./screens/Recharge"
 import { Amount } from "./amount/Amount"
-import { DynamicMenu } from "./menu/DynamicMenu"
-import { Balance } from "./screens/Balance"
-import OtpInput from "./otp/OtpInput"
+import { Balance } from "./balance/Balance"
 import { Login } from "./login/Login"
+import { Menu } from "./menu/Menu"
+import OtpInput from "./otp/OtpInput"
 
 
 
@@ -15,7 +13,6 @@ export default function App() {
       <Route path="/" element={<Login />} />
       <Route path="/otp" element={<OtpInput />} />
       <Route path="/menu" element={<Menu />} />
-      <Route path="/recharge" element={<Recharge />} />
       <Route path="/amount" element={<Amount />} />
       <Route path="/balance" element={<Balance />} />
     </Routes>
